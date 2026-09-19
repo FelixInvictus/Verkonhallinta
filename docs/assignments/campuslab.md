@@ -195,10 +195,11 @@ ip route 192.168.100.0 255.255.255.0 172.16.0.1
 ```bash
 sudo apt update
 
-sudo apt install -y git python3-pip
+sudo apt install -y git python3-pip python3-paramiko
 
 sudo apt install ansible
 
+# vain jos asennus pip kautta.
 ansible-galaxy collection install cisco.ios
 ```
 
