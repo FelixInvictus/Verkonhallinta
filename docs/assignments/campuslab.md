@@ -182,7 +182,7 @@ interface g0/1
 !reitti R1
 ip route 10.10.10.0 255.255.255.0 172.16.0.2
 
-!reitt R2
+!reitti R2
 ip route 192.168.100.0 255.255.255.0 172.16.0.1
 ```
 
