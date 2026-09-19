@@ -6,6 +6,8 @@
   tasks:
     - name: Kerää ios faktat
       cisco.ios.ios_facts:
+        gather_subset:
+          - all
 
     - name: näytä hostnimi
       debug:
