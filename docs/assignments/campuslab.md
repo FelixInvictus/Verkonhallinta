@@ -251,6 +251,8 @@ all:
         ansible_password: Salainen123
         ansible_ssh_common_args:
             -o HostKeyAlgorithms=+ssh-rsa
+            -o StrictHostKeyChecking=no
+            -o UserKnownHostsFile=/dev/null
             -o PubkeyAcceptedAlgorithms=+ssh-rsa
             -o KexAlgorithms=+diffie-hellman-group14-sha1
 ```
