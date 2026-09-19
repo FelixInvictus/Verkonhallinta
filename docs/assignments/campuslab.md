@@ -238,8 +238,12 @@ all:
       vars:
         ansible_connection: network_cli
         ansible_network_os: cisco.ios.ios
-        # ansible_user: admin
-        # ansible_password: Salainen123
+        ansible_user: admin
+        ansible_password: Salainen123
+        ansible_ssh_common_args:
+            -o HostKeyAlgorithms=+ssh-rsa
+            -o PubkeyAcceptedAlgorithms=+ssh-rsa
+            -o KexAlgorithms=+diffie-hellman-group14-sha1
 ```
 
 ---
