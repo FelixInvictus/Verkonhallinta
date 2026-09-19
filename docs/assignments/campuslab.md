@@ -176,7 +176,15 @@ interface g0/1
  no shutdown
 ```
 
-> Routerit eivät ole L3-kytkimiä, joten `interface vlan 1` ei ole niissä pätevä konfiguraatio - hallinta- ja käyttäjäverkot konfiguroidaan suoraan fyysisille G0/x-interfaceille. `ip routing` on Cisco IOS -reitittimillä päällä oletusarvoisesti, joten R1 reitittää automaattisesti hallintaverkon (192.168.100.0/24) ja reititysverkon (172.16.0.0/30) välillä - erillisiä staattisia reittejä ei tarvita R2:n saavuttamiseksi Ansiblesta.
+> Routerit eivät ole L3-kytkimiä, joten `interface vlan 1` ei ole niissä pätevä konfiguraatio - hallinta- ja käyttäjäverkot konfiguroidaan suoraan fyysisille G0/x-interfaceille. `ip routing` on Cisco IOS -reitittimillä päällä oletusarvoisesti, joten R1 reitittää automaattisesti hallintaverkon (192.168.100.0/24) ja reititysverkon (172.16.0.0/30) välillä - erillisiä staattisia reittejä ei tarvita R2:n saavuttamiseksi Ansiblesta. Staattiset verkot kannattaa kuitenkin lisätä reitittimille, jotta palvelimet ja työasemat pystyvät liikennöimään keskenään.
+
+```cisco
+!reitti R1
+ip route 10.10.10.0 255.255.255.0 172.16.0.2
+
+!reitt R2
+ip route 192.168.100.0 255.255.255.0 172.16.0.1
+```
 
 ---
 
@@ -189,7 +197,7 @@ sudo apt update
 
 sudo apt install -y git python3-pip
 
-pip install ansible
+sudo apt install ansible
 
 ansible-galaxy collection install cisco.ios
 ```
